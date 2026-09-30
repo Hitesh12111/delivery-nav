@@ -1,0 +1,92 @@
+{
+  "_readme": [
+    "ARAVALI GREENS — digital twin used by the prototype. Edit this file, refresh the page; no code changes needed.",
+    "Units are metres. x: west (-) to east (+). z: north (-) to south (+). (0,0) is the centre of the site.",
+    "Towers: change x/z to move, 'label' to renumber, 'floors' for height, 'rot' 0 or 90 to turn it.",
+    "serviceSide / residentSide (north|south|east|west): which face has the service entrance / resident lobby.",
+    "The route engine connects each entrance to the nearest road that the role is allowed to use (see 'access').",
+    "Roads: polylines. 'type' decides who may use them. Junctions are detected automatically where roads cross."
+  ],
+
+  "id": "AG65",
+  "name": "Aravali Greens",
+  "locality": "Sector 65, Gurugram",
+  "floorHeight": 3.2,
+  "flatsPerFloor": 6,
+
+  "site": { "minX": -230, "maxX": 230, "minZ": -170, "maxZ": 170, "wallHeight": 2.6 },
+
+  "access": {
+    "delivery": ["service", "shared", "gate_service", "spur_service"],
+    "resident": ["internal", "shared", "gate_main", "spur_resident"]
+  },
+
+  "towers": [
+    { "id": "T1",  "label": "1",  "x": -45,  "z": 120,  "rot": 0,  "floors": 20, "serviceSide": "south", "residentSide": "north" },
+    { "id": "T2",  "label": "2",  "x": 60,   "z": 120,  "rot": 0,  "floors": 22, "serviceSide": "south", "residentSide": "north" },
+    { "id": "T3",  "label": "3",  "x": 110,  "z": -40,  "rot": 0,  "floors": 18, "serviceSide": "east",  "residentSide": "north" },
+    { "id": "T4",  "label": "4",  "x": -110, "z": 40,   "rot": 0,  "floors": 18, "serviceSide": "west",  "residentSide": "south" },
+    { "id": "T5",  "label": "5",  "x": -105, "z": 120,  "rot": 0,  "floors": 20, "serviceSide": "south", "residentSide": "north" },
+    { "id": "T6",  "label": "6",  "x": -175, "z": 120,  "rot": 0,  "floors": 22, "serviceSide": "south", "residentSide": "north" },
+    { "id": "T7",  "label": "7",  "x": -185, "z": 40,   "rot": 90, "floors": 24, "serviceSide": "west",  "residentSide": "east" },
+    { "id": "T8",  "label": "8",  "x": -185, "z": -40,  "rot": 90, "floors": 24, "serviceSide": "west",  "residentSide": "east" },
+    { "id": "T9",  "label": "9",  "x": -110, "z": -40,  "rot": 0,  "floors": 18, "serviceSide": "west",  "residentSide": "north" },
+    { "id": "T10", "label": "10", "x": -175, "z": -120, "rot": 0,  "floors": 26, "serviceSide": "north", "residentSide": "south" },
+    { "id": "T11", "label": "11", "x": -105, "z": -120, "rot": 0,  "floors": 26, "serviceSide": "north", "residentSide": "south" },
+    { "id": "T12", "label": "12", "x": -35,  "z": -120, "rot": 0,  "floors": 24, "serviceSide": "north", "residentSide": "south" },
+    { "id": "T15", "label": "15", "x": 35,   "z": -120, "rot": 0,  "floors": 24, "serviceSide": "north", "residentSide": "south" },
+    { "id": "T14", "label": "14", "x": 105,  "z": -120, "rot": 0,  "floors": 22, "serviceSide": "north", "residentSide": "south" },
+    { "id": "T16", "label": "16", "x": 175,  "z": -120, "rot": 0,  "floors": 26, "serviceSide": "north", "residentSide": "south" },
+    { "id": "T17", "label": "17", "x": 185,  "z": -40,  "rot": 90, "floors": 24, "serviceSide": "east",  "residentSide": "west" }
+  ],
+  "_towerNote": "There is no Tower 13 (common in Indian societies), and 14 sits between 15 and 16, hidden behind Tower 3 when seen from the main gate.",
+
+  "gates": [
+    { "id": "G1", "name": "Gate 1", "sub": "Main · Residents & visitors", "x": 0,   "z": 170, "axis": "z", "width": 18, "type": "main" },
+    { "id": "G2", "name": "Gate 2", "sub": "Staff & delivery entry",      "x": 230, "z": 100, "axis": "x", "width": 10, "type": "service" }
+  ],
+
+  "roads": [
+    { "id": "service_loop",  "name": "Service road",   "type": "service",      "width": 7,  "closed": true,
+      "points": [[-216, -156], [216, -156], [216, 156], [-216, 156]] },
+    { "id": "gate2_entry",   "name": "Gate 2 entry",   "type": "gate_service", "width": 7,  "points": [[230, 100], [216, 100]] },
+    { "id": "gate1_entry",   "name": "Gate 1 entry",   "type": "gate_main",    "width": 14, "points": [[0, 170], [0, 156]] },
+    { "id": "boulevard",     "name": "Central avenue", "type": "internal",     "width": 12, "points": [[0, 156], [0, 85]] },
+    { "id": "north_avenue",  "name": "North avenue",   "type": "internal",     "width": 8,  "points": [[-216, -85], [216, -85]] },
+    { "id": "south_avenue",  "name": "South avenue",   "type": "internal",     "width": 8,  "points": [[-216, 85], [216, 85]] },
+    { "id": "west_lane",     "name": "West lane",      "type": "shared",       "width": 7,  "points": [[-150, -156], [-150, 156]] },
+    { "id": "east_lane",     "name": "East lane",      "type": "shared",       "width": 7,  "points": [[150, -156], [150, 156]] }
+  ],
+
+  "outsideRoads": [
+    { "name": "Sector Road (Golf Course Ext.)", "width": 26, "points": [[-900, 196], [900, 196]] },
+    { "name": "Sector 65 internal road",        "width": 16, "points": [[252, -900], [252, 900]] }
+  ],
+
+  "clubhouse": { "x": 185, "z": 50, "w": 30, "d": 22, "h": 9, "pool": { "x": 185, "z": 72, "w": 18, "d": 7 } },
+
+  "courts": [ { "x": 110, "z": 42, "w": 24, "d": 12, "kind": "tennis" } ],
+
+  "green": { "minX": -82, "maxX": 82, "minZ": -78, "maxZ": 78, "plazaRadius": 14,
+             "pond": { "x": -42, "z": 32, "rx": 16, "rz": 9 } },
+
+  "parking": [
+    { "minX": 90,  "maxX": 144, "minZ": 100, "maxZ": 146, "rowsAlong": "x" },
+    { "minX": 156, "maxX": 206, "minZ": 100, "maxZ": 146, "rowsAlong": "x" },
+    { "minX": 12,  "maxX": 38,  "minZ": 98,  "maxZ": 146, "rowsAlong": "z" }
+  ],
+
+  "landmarks": [
+    { "id": "clubhouse", "name": "Clubhouse", "x": 185, "z": 50 },
+    { "id": "green",     "name": "Central Green", "x": 0, "z": 0 },
+    { "id": "courts",    "name": "Tennis court", "x": 110, "z": 42 }
+  ],
+
+  "delivery": {
+    "_note": "Hard-coded demo destination. In production this would come from the QR / order.",
+    "from": "G2",
+    "tower": "T14",
+    "floor": 3,
+    "flat": "304"
+  }
+}
